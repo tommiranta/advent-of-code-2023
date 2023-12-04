@@ -124,24 +124,11 @@ func findNext(pos *position, lines []string) int {
 				}
 				res, err := strconv.Atoi(part_string)
 				if err != nil {
-					fmt.Printf("Error parsing '%s'\n", part_string)
 					return -1
-				}
-				if part_string == "936" {
-					one, two := getVerificationArea(part, lines)
-					fmt.Println(
-						"pos:",
-						part,
-						isAdjacentToSymbol(part, lines),
-					)
-					for y := one.y; y <= two.y; y++ {
-						fmt.Println(lines[y][one.x:two.x])
-					}
 				}
 				if isAdjacentToSymbol(part, lines) {
 					return res
 				}
-				// fmt.Println("skipped:", part_string, "pos:", part)
 				part.x1 = -1
 				part.x2 = -1
 			}
@@ -176,7 +163,6 @@ func main() {
 		if ret == -1 {
 			break
 		}
-		// fmt.Println(ret)
 		sum += ret
 	}
 	fmt.Println(sum)
